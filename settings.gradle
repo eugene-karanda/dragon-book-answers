@@ -1,0 +1,7 @@
+rootProject.name = 'dragon-book-answers'
+
+include 'chapter-02'
+include 'chapter-02:2.4'
+include 'chapter-02:2.4:2.4-b'
+rootProject.name = 'dragon-book-answers'
+
