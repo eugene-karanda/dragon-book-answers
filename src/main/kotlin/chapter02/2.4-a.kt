@@ -6,5 +6,34 @@ package chapter02
  * S -► + S S | - S S | а
  */
 fun main(args: Array<String>) {
+    eventLoop@ do {
+        val expression = readLine()
 
+        when (expression) {
+            ".exit" -> break@eventLoop
+            null -> continue@eventLoop
+            else -> Analyser24a(expression).s()
+        }
+    } while (true)
+}
+
+class Analyser24a(expression: String) {
+
+    private val charIterator: CharIterator = expression.iterator()
+
+    fun s() {
+        val token = when (charIterator.hasNext()) {
+            true -> charIterator.nextChar()
+            false -> throw RuntimeException("Unexpected end of line")
+        }
+
+        when (token) {
+            '+', '-' -> {
+                s()
+                s()
+            }
+            'a' -> return
+            else -> throw RuntimeException("Unexpected token '$token'")
+        }
+    }
 }
